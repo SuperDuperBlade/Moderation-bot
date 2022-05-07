@@ -7,14 +7,16 @@ public class Message extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent e){
 
-        String args[] = e.getMessage().getContentRaw().split(" ");
+        String[] args = e.getMessage().getContentRaw().split(" ");
+
+
 
         if (args[0].equalsIgnoreCase("hello")||args[0].equalsIgnoreCase("hi")){
             e.getChannel().sendMessage("Hello!").queue();
 
         }
         if(args[0].equalsIgnoreCase("help")){
-            e.getChannel().sendMessage("help me daddy owo");
+            e.getChannel().sendMessage("help me daddy owo").queue();
         }
 
 
