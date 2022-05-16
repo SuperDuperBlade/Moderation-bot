@@ -12,8 +12,9 @@ public class Messagelength extends ListenerAdapter{
         private int messagelenththreshold = 20;
 
 
-
-
+    public void setMessagelenththreshold(int messagelenththreshold) {
+        this.messagelenththreshold = messagelenththreshold;
+    }
 
     public void onMessageReceived(MessageReceivedEvent e){
         if (e.getAuthor().isBot())
