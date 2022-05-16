@@ -31,7 +31,7 @@ public class Messagelength extends ListenerAdapter{
         for (int i=0;i<=args.length;i++){
             c= args[i];
             System.out.println(c);
-            if (c.length()>=3||args.length>37){
+            if (c.length()>=messagelenththreshold||args.length>40){
                // e.getChannel().sendMessage(e.getAuthor().getAsMention()+" failed spam")
                 flag(flagtype,e.getAuthor(),e.getGuild(),e.getChannel());
             }
