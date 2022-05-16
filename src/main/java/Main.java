@@ -1,5 +1,7 @@
-import Commands.Ping;
+
 import Events.Message;
+import Moderation.Config;
+import Moderation.checks.Messagelength;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -13,7 +15,8 @@ public class Main extends ListenerAdapter {
 
 
         jda.addEventListener(new Message());
-        jda.addEventListener(new Ping());
+        jda.addEventListener(new Messagelength());
+        jda.addEventListener(new Config());
 
 
 
