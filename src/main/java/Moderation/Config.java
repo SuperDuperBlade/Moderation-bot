@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import static Moderation.Moderation.setFlagtype;
+import static Moderation.checks.Messagelength.messagelenththreshold;
 
 public class Config extends ListenerAdapter {
 
@@ -18,8 +19,17 @@ public class Config extends ListenerAdapter {
             return;
         }
         String[] args = event.getMessage().getContentRaw().split(" ");
+        if (args[0].equalsIgnoreCase("!config")&&args[1].equalsIgnoreCase("amount")){
+            try {
+                int a = Integer.parseInt(args[2]);
+                messagelenththreshold = a;
+                event.getChannel().sendMessage("threshold was set to "+a).queue();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
-
+        System.out.println("d");
         if (args[0].equalsIgnoreCase("!config") && args[1].equals("Flagtype")) {
             if (args[3].equalsIgnoreCase("silent")) {
                 setFlagtype(Flagtype.Silent);
@@ -31,15 +41,6 @@ public class Config extends ListenerAdapter {
 
         }
 
-if (args[0].equalsIgnoreCase("!config")&&args[1].equalsIgnoreCase("threshold")){
-try {
-    int a = Integer.parseInt(args[3]);
-    Messagelength messagelength  = new Messagelength();
-    messagelength.setMessagelenththreshold(a);
-    event.getChannel().sendMessage("threshold was set to "+a).queue();
-}catch (Exception e){
-    e.printStackTrace();
-}
-}
+
     }
 }

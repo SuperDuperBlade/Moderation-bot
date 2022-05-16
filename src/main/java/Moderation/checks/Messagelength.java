@@ -9,11 +9,11 @@ import static Moderation.Moderation.flagtype;
 
 public class Messagelength extends ListenerAdapter{
 
-        private int messagelenththreshold = 20;
+        public static int messagelenththreshold = 20;
 
 
-    public void setMessagelenththreshold(int messagelenththreshold) {
-        this.messagelenththreshold = messagelenththreshold;
+    public void setMessagelenththreshold(int messaththreold) {
+        messagelenththreshold = messaththreold;
     }
 
     public void onMessageReceived(MessageReceivedEvent e){
@@ -30,7 +30,7 @@ public class Messagelength extends ListenerAdapter{
 
         for (int i=0;i<=args.length;i++){
             c= args[i];
-            System.out.println(c);
+            System.out.println(this.messagelenththreshold);
             if (c.length()>=messagelenththreshold||args.length>40){
                // e.getChannel().sendMessage(e.getAuthor().getAsMention()+" failed spam")
                 flag(flagtype,e.getAuthor(),e.getGuild(),e.getChannel());
