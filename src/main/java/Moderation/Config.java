@@ -1,12 +1,8 @@
 package Moderation;
-
-import Moderation.checks.Messagelength;
 import Moderation.flags.Flagtype;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jetbrains.annotations.NotNull;
-
 import static Moderation.Moderation.setFlagtype;
 import static Moderation.checks.Messagelength.messagelenththreshold;
 

@@ -1,12 +1,12 @@
 package Moderation;
 
 import Moderation.flags.Flagtype;
-import net.dv8tion.jda.api.JDA;
+
 import net.dv8tion.jda.api.entities.Channel;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
 
 public class Moderation {
     public static void setFlagtype(Flagtype flagtype) {
@@ -45,11 +45,11 @@ public class Moderation {
     }
 
     public void Kick(User user, Guild guild) {
-        guild.kick(user);
+        guild.kick((Member) user);
     }
 
     public void mute(Guild guild, User user) {
-        guild.mute(user, true);
+        guild.mute((Member) user, true);
     }
 
     public int getThreshold() {

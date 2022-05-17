@@ -1,6 +1,7 @@
 package Moderation.checks;
 
 import Moderation.flags.Flagtype;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -19,6 +20,9 @@ public class Messagelength extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent e){
         if (e.getAuthor().isBot())
             return;
+        if (e.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+            return;
+        }
 
 
         String[] args = e.getMessage().getContentRaw().split(" ");
