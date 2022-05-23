@@ -45,7 +45,7 @@ public class SpamA extends ListenerAdapter {
                             return;
                         }
                         // prevents false flags with mentions
-                        if (c.length()<40&&!e.getMessage().mentionsEveryone()||e.getMessage().getMentionedMembers().size()<6)
+                        if(e.getMessage().getContentRaw().length()<50&&e.getMessage().getMentionedMembers().size()<5)
                             return;
                         // prevents false flags with links
                         if (c.contains("www.") || c.contains("https") && c.length() < 80) {

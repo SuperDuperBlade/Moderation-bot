@@ -2,7 +2,6 @@ package Moderation.checks;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jetbrains.annotations.NotNull;
 
 import static Moderation.Moderation.flag;
 import static Moderation.Moderation.flagtype;
