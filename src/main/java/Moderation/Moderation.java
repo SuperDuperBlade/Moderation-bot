@@ -12,7 +12,8 @@ public class Moderation {
     public static void setFlagtype(Flagtype flagtype) {
         Moderation.flagtype = flagtype;
     }
-//todo make it so spam A is run before spam B
+
+    //todo make it so spam A is run before spam B
     //todo add more actions for different mode
     public static Flagtype flagtype = Flagtype.normal;
     private int threshold;
@@ -24,7 +25,7 @@ public class Moderation {
     }
 
 
-    public static void flag(Flagtype f, User u, Guild guild, Channel c,String flagname,Message message) {
+    public static void flag(Flagtype f, User u, Guild guild, Channel c, String flagname, Message message) {
         if (f == Flagtype.none) {
             return;
         }
@@ -34,18 +35,15 @@ public class Moderation {
         }
         if (f == Flagtype.normal) {
             String l = u.getAsMention();
-            EmbedBuilder em =  new EmbedBuilder()
-               //   .setImage(u.getAvatarUrl())
+            EmbedBuilder em = new EmbedBuilder()
                     .setTitle("Moderation ")
-            .setColor(Color.RED).setFooter("Moderation")
-                    .addField("User :",u.getAsMention(),true)
-                            .addField("Flagtype :",flagname,true)
-                              .addField("Message",message.getContentRaw(),true);
+                    .setColor(Color.RED).setFooter("Moderation")
+                    .addField("User :", u.getAsMention(), true)
+                    .addField("Flagtype :", flagname, true)
+                    .addField("Message", message.getContentRaw(), true);
 
 
-           guild.getTextChannelById(c.getId()).sendMessageEmbeds(em.build()).queue();
-
-
+            guild.getTextChannelById(c.getId()).sendMessageEmbeds(em.build()).queue();
 
 
         }

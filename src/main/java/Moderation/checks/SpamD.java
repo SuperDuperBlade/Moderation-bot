@@ -13,7 +13,7 @@ public class SpamD extends ListenerAdapter {
         if (message.contains("https")||message.contains("www.")){
             if (message.contains("dis")) {
                 if (message.contains("nitro")||message.contains("steam")) {
-                    flag(flagtype, e.getAuthor(), e.getGuild(), e.getChannel(), "Spam C", e.getMessage());
+                    flag(flagtype, e.getAuthor(), e.getGuild(), e.getChannel(), "Spam D", e.getMessage());
                     e.getMessage().delete().queue();
                 }
             }

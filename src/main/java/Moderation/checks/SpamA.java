@@ -48,9 +48,8 @@ public class SpamA extends ListenerAdapter {
                         if(e.getMessage().getContentRaw().length()<50&&e.getMessage().getMentionedMembers().size()<5)
                             return;
                         // prevents false flags with links
-                        if (c.contains("www.") || c.contains("https") && c.length() < 80) {
+                        if (e.getMessage().getContentRaw().contains("www.") || e.getMessage().getContentRaw().contains("https")) {
                             this.counter++;
-
                         }else {
                             e.getMessage().delete().queue();
                             flag(flagtype, e.getAuthor(), e.getGuild(), e.getChannel(), "Spam A", e.getMessage());

@@ -37,14 +37,13 @@ public class SpamB extends ListenerAdapter {
                 this.amount++;
             }
 
-            if (flagneeded >= this.amount) {
+            if (flagneeded <= this.amount) {
                 flag(flagtype, e.getAuthor(), e.getGuild(), e.getChannel(), "Spam B", e.getMessage());
-                   e.getMessage().delete().queue();
-                   return;
+                e.getMessage().delete().queue();
+                return;
             }
             x++;
 
         }
     }
 }
-
