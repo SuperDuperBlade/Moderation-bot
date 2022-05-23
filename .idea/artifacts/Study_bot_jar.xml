@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="Study-bot:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Study_bot_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Study-bot.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Study-bot" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -2,17 +2,18 @@ package Moderation;
 
 import Moderation.flags.Flagtype;
 
-import net.dv8tion.jda.api.entities.Channel;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.*;
+
+import java.awt.*;
 
 
 public class Moderation {
     public static void setFlagtype(Flagtype flagtype) {
         Moderation.flagtype = flagtype;
     }
-
+//todo make it so spam A is run before spam B
+    //todo add more actions for different mode
     public static Flagtype flagtype = Flagtype.normal;
     private int threshold;
     private boolean trustfactor;
@@ -23,7 +24,7 @@ public class Moderation {
     }
 
 
-    public static void flag(Flagtype f, User u, Guild guild, Channel c) {
+    public static void flag(Flagtype f, User u, Guild guild, Channel c,String flagname,Message message) {
         if (f == Flagtype.none) {
             return;
         }
@@ -32,7 +33,21 @@ public class Moderation {
 
         }
         if (f == Flagtype.normal) {
-            guild.getTextChannelById(c.getId()).sendMessage(u.getAsMention()+" failed spam").queue();
+            String l = u.getAsMention();
+            EmbedBuilder em =  new EmbedBuilder()
+               //   .setImage(u.getAvatarUrl())
+                    .setTitle("Moderation ")
+            .setColor(Color.RED).setFooter("Moderation")
+                    .addField("User :",u.getAsMention(),true)
+                            .addField("Flagtype :",flagname,true)
+                              .addField("Message",message.getContentRaw(),true);
+
+
+           guild.getTextChannelById(c.getId()).sendMessageEmbeds(em.build()).queue();
+
+
+
+
         }
         if (f == Flagtype.Silent) {
 
