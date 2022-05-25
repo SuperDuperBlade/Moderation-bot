@@ -12,39 +12,29 @@ public class Config extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-   //     if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) {//return;
-     //   }
+        //     if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) {//return;
+        //   }
 
 
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if(args[0].equalsIgnoreCase("!info")){
+        if (args[0].equalsIgnoreCase("!info")) {
             EmbedBuilder em = new EmbedBuilder()
                     .setTitle("Info")
-                    .addField("Spam A :","checks the length of the word",true)
-                    .addField("Spam B :","checks if the words in the sentence are similar",true)
-                    .addField("Spam C :","checks if the last sentance is the same as the current one ",true)
-                    .addField("Spam D : ","trys to see if the user has sent a nitro scam link",true);
+                    .addField("Spam A :", "checks the length of the word", true)
+                    .addField("Spam B :", "checks if the words in the sentence are similar", true)
+                    .addField("Spam C :", "checks if the last sentance is the same as the current one ", true)
+                    .addField("Spam D : ", "trys to see if the user has sent a nitro scam link", true);
             event.getChannel().sendMessageEmbeds(em.build()).queue();
 
         }
-        if (args[0].equalsIgnoreCase("!config")&&args[1].equalsIgnoreCase("amount")){
+        if (args[0].equalsIgnoreCase("!config") && args[1].equalsIgnoreCase("amount")) {
             try {
                 int a = Integer.parseInt(args[2]);
                 messagelenththreshold = a;
-                event.getChannel().sendMessage("threshold was set to "+a).queue();
-            }catch (Exception e){
+                event.getChannel().sendMessage("threshold was set to " + a).queue();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-
-        if (args[0].equalsIgnoreCase("!config") && args[1].equals("Flagtype")) {
-            if (args[3].equalsIgnoreCase("silent")) {
-                setFlagtype(Flagtype.Silent);
-            }
-
-        } else if (args[3].equalsIgnoreCase("None")) {
-            setFlagtype(Flagtype.none);
-
         }
 
 

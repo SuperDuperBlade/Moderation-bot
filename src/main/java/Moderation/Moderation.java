@@ -19,6 +19,7 @@ public class Moderation {
     private int threshold;
     private boolean trustfactor;
     private boolean ignoreprotected;
+    private static long modid = 0;
 
 
     public Moderation(Flagtype flag, int threshold, boolean trustfactor) {
@@ -37,13 +38,13 @@ public class Moderation {
             String l = u.getAsMention();
             EmbedBuilder em = new EmbedBuilder()
                     .setTitle("Moderation ")
-                    .setColor(Color.RED).setFooter("Moderation")
+                    .setColor(Color.RED).setFooter("Moderation id: "+String.valueOf(modid++))
                     .addField("User :", u.getAsMention(), true)
                     .addField("Flagtype :", flagname, true)
                     .addField("Message", message.getContentRaw(), true);
 
 
-            guild.getTextChannelById(c.getId()).sendMessageEmbeds(em.build()).queue();
+            guild.getTextChannelById("977589705304588289").sendMessageEmbeds(em.build()).queue();
 
 
         }

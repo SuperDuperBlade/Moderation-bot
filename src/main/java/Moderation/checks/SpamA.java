@@ -1,6 +1,7 @@
 package Moderation.checks;
 
 import Moderation.flags.Flagtype;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import static Moderation.Moderation.flag;
@@ -23,9 +24,6 @@ public class SpamA extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent e) {
         if (e.getAuthor().isBot())
             return;
-        //    if (e.getMember().hasPermission(Permission.ADMINISTRATOR)) {
-        //       return;
-        //     }
 
 
         String[] args = e.getMessage().getContentRaw().split(" ");
@@ -45,7 +43,7 @@ public class SpamA extends ListenerAdapter {
                             return;
                         }
                         // prevents false flags with mentions
-                        if(e.getMessage().getContentRaw().length()<50&&e.getMessage().getMentionedMembers().size()<5)
+                        if(e.getMessage().getContentRaw().length()<50&&e.getMessage().getMentions().getMentions().size()<5)
                             return;
                         // prevents false flags with links
                         if (e.getMessage().getContentRaw().contains("www.") || e.getMessage().getContentRaw().contains("https")) {

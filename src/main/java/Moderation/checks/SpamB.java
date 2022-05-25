@@ -1,4 +1,5 @@
 package Moderation.checks;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -14,13 +15,12 @@ public class SpamB extends ListenerAdapter {
     // this checks if the word is equal to the other 3 words in front of it
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
+        if (e.getAuthor().isBot())
+            return;
         this.amount = 0;
-        //   if (!e.getAuthor().isBot() || e.getMember().hasPermission(Permission.ADMINISTRATOR)) {
-        //   /       return;
 
         String[] args = e.getMessage().getContentRaw().split(" ");
 
-        String l = "x";
 
         int x = 0;
         int flagneeded = Math.round(args.length / 7);
