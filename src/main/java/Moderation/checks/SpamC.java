@@ -23,7 +23,13 @@ public class SpamC extends ListenerAdapter {
 String[] amount = e.getMessage().getContentRaw().split(" ");
 
         if (this.preMessage.equalsIgnoreCase("")&&e.getMessage().getContentRaw().replaceAll("\\d", "").equals("")&& amount.length<3){
-            return;
+
+            if (this.une.equalsIgnoreCase(e.getMessage().getContentRaw())) {
+                this.messID.delete().queue();
+                flag(flagtype, e.getAuthor(), e.getGuild(), e.getChannel(), "Spam C", e.getMessage());
+                e.getMessage().delete().queue();
+                return;
+            }
         }
 
 
